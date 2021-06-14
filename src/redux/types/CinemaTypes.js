@@ -1,0 +1,2 @@
+export const GET_CINEMA_INFO = "GET_CINEMA_INFO";
+export const GET_CINEMA_SHOW_TIME = "GET_CINEMA_SHOW_TIME";

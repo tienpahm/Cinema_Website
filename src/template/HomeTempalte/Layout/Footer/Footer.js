@@ -1,6 +1,9 @@
+import _ from "lodash";
 import React from "react";
+import {useSelector} from "react-redux";
 
 export default function Footer() {
+  const {arrCinemaShowTime} = useSelector((state) => state.CinemaReducer);
   return (
     <div>
       <footer className="py-6 bg-gray-900 text-white">
@@ -24,66 +27,25 @@ export default function Footer() {
                 </span>
               </a>
             </div>
-            <div className="col-span-6 text-center md:text-left md:col-span-3">
+            <div className="col-span-6 text-center md:text-left md:col-span-1">
               <p className="pb-1 text-lg font-medium">Category</p>
-              <ul>
-                <li>
-                  <a href="#" className="hover:text-amber-600">
-                    Link
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-amber-600">
-                    Link
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-amber-600">
-                    Link
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-amber-600">
-                    Link
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-amber-600">
-                    Link
-                  </a>
-                </li>
-                {/**/}
+              <ul style={{columns: "2"}}>
+                {_.map(arrCinemaShowTime, (item, index) => {
+                  return (
+                    <li>
+                      <img
+                        src={item.logo}
+                        alt=""
+                        className="w-8 h-8 rounded-full"
+                      />
+                    </li>
+                  );
+                })}
               </ul>
             </div>
             <div className="col-span-6 text-center md:text-left md:col-span-3">
-              <p className="pb-1 text-lg font-medium">Category</p>
-              <ul>
-                <li>
-                  <a href="#" className="hover:text-amber-600">
-                    Link
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-amber-600">
-                    Link
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-amber-600">
-                    Link
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-amber-600">
-                    Link
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-amber-600">
-                    Link
-                  </a>
-                </li>
-              </ul>
+              {/* <p className="pb-1 text-lg font-medium">Category</p> */}
+              <ul></ul>
             </div>
           </div>
           <div className="grid justify-center pt-6 lg:justify-between">

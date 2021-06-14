@@ -1,4 +1,3 @@
-import axios from "axios";
 import {quanLyPhimService} from "../../services/QuanLiPhimService";
 import {SET_MOVIE_LIST} from "../types/MovieManagementTypes";
 
