@@ -1,0 +1,16 @@
+.slick-slider .slick-prev:before,
+.slick-slider .slick-next:before {
+  font-family: "slick";
+  font-size: 50px;
+  line-height: 1;
+  opacity: 0.75;
+  color: black;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.home .active_status,
+.home .active_status {
+  background-color: #1f2937;
+  color: white;
+}
