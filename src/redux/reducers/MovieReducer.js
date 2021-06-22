@@ -1,4 +1,5 @@
 import {
+  GET_MOVIE_DETAIL,
   SET_COMING_SOON_MOVIE,
   SET_MOVIE_LIST,
   SET_SHOWING_MOVIE,
@@ -9,6 +10,7 @@ const defaultState = {
   arrMovieOrigin: null,
   showingStatus: false,
   comingSoonStatus: false,
+  movieDetail: null,
 };
 
 export const MovieReducer = (state = defaultState, {type, payload}) => {
@@ -45,6 +47,10 @@ export const MovieReducer = (state = defaultState, {type, payload}) => {
       }
 
       return {...state};
+    }
+
+    case GET_MOVIE_DETAIL: {
+      return {...state, movieDetail: payload};
     }
     default:
       return {...state};

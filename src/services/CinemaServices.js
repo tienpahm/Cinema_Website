@@ -13,6 +13,9 @@ export class CinemaServices extends baseService {
       `api/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=${GROUP}`
     );
   };
+  getCinemaDetail = (id) => {
+    return this.get(`api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${id}`);
+  };
 }
 
 export const cinemaServices = new CinemaServices();

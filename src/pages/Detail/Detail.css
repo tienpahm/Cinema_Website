@@ -1,0 +1,11 @@
+.cinema-header {
+  position: relative;
+}
+.movie-detail .ant-tabs > .ant-tabs-nav .ant-tabs-nav-wrap,
+.ant-tabs > div > .ant-tabs-nav .ant-tabs-nav-wrap {
+  flex: none;
+}
+.movie-detail .ant-tabs > .ant-tabs-nav,
+.ant-tabs > div > .ant-tabs-nav {
+  justify-content: center;
+}

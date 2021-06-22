@@ -1,0 +1,122 @@
+.cinema-options {
+  color: #b9bbbb;
+  width: 200px;
+  padding: 8px 10px;
+}
+.cinema-options:focus {
+  outline: none;
+}
+.cinema-header {
+  z-index: 2;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.cinema-header-time-ticket {
+  align-self: center;
+  background-color: black;
+  height: 100%;
+  border: 1px solid white;
+}
+.cinema-header-time-ticket span {
+  display: inline-block;
+  padding: 8px 40px;
+}
+.cinema-nav-options {
+  font-size: 1.2rem;
+}
+.cinema-header-member {
+  font-size: 1.8rem;
+  margin-left: 50px;
+  font-weight: 1000;
+  font-family: sans-serif;
+}
+.cinema-header-member span {
+  color: #fdb813;
+}
+
+.cinema-header {
+  background-color: black;
+}
+.icon-wrapper {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  margin-left: 40px;
+}
+.icon-wrapper.open .icon-bar {
+  width: 20px;
+}
+.icon-wrapper .icon-bar {
+  display: block;
+  position: absolute;
+  height: 2px;
+  width: 12px;
+  background: white;
+  opacity: 1;
+  top: 10px;
+  transition: 0.2s;
+}
+.icon-wrapper .icon-bar:nth-child(1) {
+  transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  left: 0;
+}
+.icon-wrapper .icon-bar:nth-child(2) {
+  transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  right: 0;
+}
+.login-container {
+  background-color: #f3f3f3;
+  width: 300px;
+  position: absolute;
+  top: 50px;
+  right: 40%;
+  transform: translateY(-120%);
+  opacity: 0;
+  transition: 0.5s;
+}
+.icon-wrapper.open .login-container {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.login-nav,
+.join-nav {
+  font-size: 1.2rem;
+  color: black;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+.login-nav.active,
+.join-nav.active {
+  color: #d61023;
+}
+.login-content,
+.join-content {
+  color: black;
+}
+.login-content.active,
+.join-content.active {
+  display: none;
+}
+.login-container label {
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+.home-carousel .slick-active div {
+  opacity: 1 !important;
+}
+.home-carousel .slick-slider .slick-prev:before,
+.home-carousel .slick-slider .slick-next:before {
+  color: gray;
+}

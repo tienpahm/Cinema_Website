@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
-import {Tabs, Radio, Space} from "antd";
+import {Tabs} from "antd";
 import {useDispatch, useSelector} from "react-redux";
-import useSelection from "antd/lib/table/hooks/useSelection";
+
 import {
   getCinemaInfo,
   getCinemaShowTime,
@@ -94,7 +94,9 @@ export default function HomeMenu() {
                                         movie.lstLichChieuTheoPhim.slice(0, 10),
                                         (item, index) => {
                                           return (
-                                            <p className="px-5 py-2 border-2 mr-2 text-2xl">
+                                            <p
+                                              key={index}
+                                              className="px-5 py-2 border-2 mr-2 text-2xl">
                                               {item.ngayChieuGioChieu.slice(
                                                 11,
                                                 16

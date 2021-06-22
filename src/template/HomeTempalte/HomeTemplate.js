@@ -13,12 +13,12 @@ export const HomeTemplate = (props) => {
       {...restProps}
       render={(propsRoute) => {
         return (
-          <Fragment>
-            <Header {...restProps} />
-            <HomeCarousel {...restProps} />
-            <Component {...props} />
+          <div className="h-auto">
+            <Header {...propsRoute} />
+
+            <Component {...propsRoute} />
             <Footer />
-          </Fragment>
+          </div>
         );
       }}></Route>
   );

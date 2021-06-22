@@ -1,5 +1,5 @@
 import {quanLyPhimService} from "../../services/QuanLiPhimService";
-import {SET_MOVIE_LIST} from "../types/MovieManagementTypes";
+import {GET_MOVIE_DETAIL, SET_MOVIE_LIST} from "../types/MovieManagementTypes";
 
 export const getMovieList = (param) => {
   return async (dispatch) => {
@@ -8,6 +8,20 @@ export const getMovieList = (param) => {
       console.log(res);
       dispatch({
         type: SET_MOVIE_LIST,
+        payload: res.data.content,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+export const getMovieDetail = (id) => {
+  return async (dispatch) => {
+    try {
+      const res = await quanLyPhimService.getMovieDetail(id);
+      console.log(res);
+      dispatch({
+        type: GET_MOVIE_DETAIL,
         payload: res.data.content,
       });
     } catch (error) {

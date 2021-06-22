@@ -11,6 +11,9 @@ export class QuanLyPhimService extends baseService {
   getMovieList = () => {
     return this.get(`api/QuanLyPhim/LayDanhSachPhim?maNhom=${GROUP}`);
   };
+  getMovieDetail = (id) => {
+    return this.get(`api/QuanLyPhim/LayThongTinPhim?MaPhim=${id}`);
+  };
 }
 
 export const quanLyPhimService = new QuanLyPhimService();
