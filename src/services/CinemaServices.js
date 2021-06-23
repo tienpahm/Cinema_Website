@@ -16,6 +16,14 @@ export class CinemaServices extends baseService {
   getCinemaDetail = (id) => {
     return this.get(`api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${id}`);
   };
+  getShowtimeByCine = (cineId) => {
+    return this.get(
+      `api/QuanLyRap/LayThongTinLichChieuHeThongRap?maHeThongRap=${cineId}&maNhom=${GROUP}`
+    );
+  };
+  bookingTicket = (ticket) => {
+    return this.post(`api/QuanLyDatVe/DatVe`, ticket);
+  };
 }
 
 export const cinemaServices = new CinemaServices();

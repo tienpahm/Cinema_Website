@@ -9,6 +9,7 @@ import News from "./pages/News/News";
 import Detail from "./pages/Detail/Detail";
 import CinemaDetail from "./pages/CinemaDetail/CinemaDetail";
 import CinemaShows from "./pages/CinemaShows/CinemaShows";
+import UserProfile from "./pages/UserProfile/UserProfile";
 
 export const history = createBrowserHistory();
 
@@ -27,6 +28,12 @@ function App() {
           exaxt
           Component={CinemaDetail}
         />
+        <HomeTemplate
+          path="/cinemashows/cinemaDetail/:id"
+          exaxt
+          Component={CinemaDetail}
+        />
+        <HomeTemplate path="/userProfile" exact Component={UserProfile} />
       </Switch>
     </Router>
   );

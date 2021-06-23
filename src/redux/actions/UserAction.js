@@ -2,7 +2,7 @@ import {message} from "antd";
 import {userService} from "../../services/UserService";
 import {STATUS, TOKEN, USER} from "../../util/settings/config";
 import {TOGGLE_HEADER} from "../types/ToggleTypes";
-import {SET_CURRENT_USER} from "../types/UserTypes";
+import {SET_CURRENT_USER, SET_USER_PROFILE} from "../types/UserTypes";
 
 export const loginUser = (user) => {
   return async (dispatch) => {
@@ -20,6 +20,22 @@ export const loginUser = (user) => {
         });
         dispatch({
           type: SET_CURRENT_USER,
+          payload: data.content,
+        });
+      }
+    } catch (error) {
+      message.error("Invalid username or password");
+    }
+  };
+};
+export const getUserProfile = (user) => {
+  return async (dispatch) => {
+    try {
+      const {data, status} = await userService.getUserProfile();
+      console.log(data);
+      if (status === STATUS.SUCCESS) {
+        dispatch({
+          type: SET_USER_PROFILE,
           payload: data.content,
         });
       }

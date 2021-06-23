@@ -89,7 +89,7 @@ export default function HomeMovieList() {
       {arrMovie ? (
         <Slider {...settings}>{renderMovieList()}</Slider>
       ) : (
-        <div>
+        <div className="loading">
           <img
             src="https://c.tenor.com/I6kN-6X7nhAAAAAj/loading-buffering.gif"
             alt=""

@@ -9,9 +9,11 @@ import Slider from "react-slick";
 import "./Home.css";
 
 import {
+  RESET_MOVIE_DETAIL,
   SET_COMING_SOON_MOVIE,
   SET_SHOWING_MOVIE,
 } from "../../redux/types/MovieManagementTypes";
+import {RESET_CINEMA_DETAIL} from "../../redux/types/CinemaTypes";
 import {Link} from "react-router-dom";
 import {history} from "../../App";
 export default function Home(props) {
@@ -19,7 +21,13 @@ export default function Home(props) {
   const {arrMovie} = useSelector((state) => state.MovieReducer);
   const [buttonStateShowing, setButtonStateShowing] = useState(false);
   const [buttonStateComing, setButtonStateComing] = useState(false);
-
+  useEffect(() => {
+    localStorage.setItem("selected_cinema", "");
+    dispatch({type: RESET_MOVIE_DETAIL});
+    dispatch({
+      type: RESET_CINEMA_DETAIL,
+    });
+  }, []);
   return (
     <div>
       <HomeCarousel />
@@ -55,9 +63,7 @@ export default function Home(props) {
           <HomeMovieList />
         </div>
       </section>
-      <div className="mx-10">
-        <HomeMenu />
-      </div>
+      <div className="mx-10">{/* <HomeMenu /> */}</div>
     </div>
   );
 }

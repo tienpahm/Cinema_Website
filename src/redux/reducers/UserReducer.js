@@ -1,6 +1,12 @@
-import {SET_CURRENT_USER, LOG_OUT_CURRENT_USER} from "../types/UserTypes";
+import {TOKEN, USER} from "../../util/settings/config";
+import {
+  SET_CURRENT_USER,
+  LOG_OUT_CURRENT_USER,
+  SET_USER_PROFILE,
+} from "../types/UserTypes";
 const stateDefault = {
   currentUser: undefined,
+  userProfile: undefined,
 };
 
 export const UserReducer = (state = stateDefault, {type, payload}) => {
@@ -11,6 +17,10 @@ export const UserReducer = (state = stateDefault, {type, payload}) => {
     case LOG_OUT_CURRENT_USER: {
       return {...state, currentUser: undefined};
     }
+    case SET_USER_PROFILE: {
+      return {...state, userProfile: payload};
+    }
+
     default:
       return {...state};
   }

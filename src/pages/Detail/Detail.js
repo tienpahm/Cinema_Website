@@ -6,6 +6,7 @@ import {Tabs, Modal} from "antd";
 import "./Detail.css";
 import {getCinemaInfo} from "../../redux/actions/CinemaAction";
 import {Rate} from "antd";
+import {RESET_CINEMA_DETAIL} from "../../redux/types/CinemaTypes";
 
 export default function Detail(props) {
   const dispatch = useDispatch();
@@ -16,6 +17,9 @@ export default function Detail(props) {
   useEffect(() => {
     dispatch(getMovieDetail(props.match.params.id));
     dispatch(getCinemaInfo());
+    dispatch({
+      type: RESET_CINEMA_DETAIL,
+    });
   }, []);
   const {TabPane} = Tabs;
   const showModal = () => {
@@ -47,32 +51,36 @@ export default function Detail(props) {
             {_.uniq(tempArr)[0]}
           </p>
           <div className="flex justify-center flex-wrap">
-            {_.map(tempContent.slice(0, 10), (item, index) => {
-              return (
-                <div
-                  key={index}
-                  className="mr-5 py-3 px-5 bg-gray-200 w-72 cursor-pointer border-red-600 mb-5 "
-                  style={{borderLeftWidth: "20px"}}
-                  onClick={() => {
-                    props.history.push(`cinemaDetail/${item.maLichChieu}`);
-                  }}>
-                  <div className="flex justify-between">
-                    <span>Original </span>
-                    <span
-                      className="bg-red-600 p-1 text-white"
-                      style={{transform: "translate(20px, -10px)"}}>
-                      SAVER
-                    </span>
+            {tempContent.length !== 0 ? (
+              _.map(tempContent.slice(0, 10), (item, index) => {
+                return (
+                  <div
+                    key={index}
+                    className="mr-5 py-3 px-5 bg-gray-200 w-72 cursor-pointer border-red-600 mb-5 "
+                    style={{borderLeftWidth: "20px"}}
+                    onClick={() => {
+                      props.history.push(`cinemaDetail/${item.maLichChieu}`);
+                    }}>
+                    <div className="flex justify-between">
+                      <span>Original </span>
+                      <span
+                        className="bg-red-600 p-1 text-white"
+                        style={{transform: "translate(20px, -10px)"}}>
+                        SAVER
+                      </span>
+                    </div>
+                    <div className="text-2xl">
+                      {item.ngayChieuGioChieu.slice(
+                        11,
+                        item.ngayChieuGioChieu.length - 3
+                      )}
+                    </div>
                   </div>
-                  <div className="text-2xl">
-                    {item.ngayChieuGioChieu.slice(
-                      11,
-                      item.ngayChieuGioChieu.length - 3
-                    )}
-                  </div>
-                </div>
-              );
-            })}
+                );
+              })
+            ) : (
+              <span>NO SESSION AVAILABLE</span>
+            )}
           </div>
         </div>
       );
@@ -180,10 +188,12 @@ export default function Detail(props) {
           </div>
         </div>
       ) : (
-        <img
-          src="https://c.tenor.com/I6kN-6X7nhAAAAAj/loading-buffering.gif"
-          alt=""
-        />
+        <div className="loading">
+          <img
+            src="https://c.tenor.com/I6kN-6X7nhAAAAAj/loading-buffering.gif"
+            alt=""
+          />
+        </div>
       )}
     </Fragment>
   );

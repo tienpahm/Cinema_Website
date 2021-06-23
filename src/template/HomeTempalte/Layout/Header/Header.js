@@ -6,10 +6,18 @@ import FormJoin from "../../../../component'/Form/FormJoin";
 import {useDispatch, useSelector} from "react-redux";
 import {TOGGLE_HEADER} from "../../../../redux/types/ToggleTypes";
 import {LOG_OUT_CURRENT_USER} from "../../../../redux/types/UserTypes";
-import {getCinemaInfo} from "../../../../redux/actions/CinemaAction";
+import {
+  getCinemaInfo,
+  getShowtimebyCine,
+} from "../../../../redux/actions/CinemaAction";
 import _ from "lodash";
+import {history} from "../../../../App";
+import {SELECTED_CINE} from "../../../../redux/types/CinemaTypes";
+import {message} from "antd";
+import {TOKEN, USER} from "../../../../util/settings/config";
+import {getUserProfile} from "../../../../redux/actions/UserAction";
 
-export default function Header() {
+export default function Header(props) {
   useEffect(() => {
     dispatch(getCinemaInfo());
   }, []);
@@ -18,8 +26,10 @@ export default function Header() {
   const {arrCinema, selectedCinema} = useSelector(
     (state) => state.CinemaReducer
   );
-  console.log(arrCinema);
+
   const {currentUser} = useSelector((state) => state.UserReducer);
+  const loginUser = JSON.parse(localStorage.getItem(USER));
+
   // const [toggle, setToggle] = useState(false);
   const [toggleLogin, setToggleLogin] = useState(false);
 
@@ -29,6 +39,10 @@ export default function Header() {
         <img
           src={require("../../../../assets/img/eventlogo.webp").default}
           alt="logo"
+          onClick={() => {
+            history.push("/");
+          }}
+          className="cursor-pointer"
         />
         <div className="items-center flex-shrink-0 hidden lg:flex">
           {/* <button className="self-center px-8 py-3 rounded">Sign in</button>
@@ -38,10 +52,12 @@ export default function Header() {
           <div className="flex justify-items-center cinema-nav-options">
             <select
               className="cinema-options"
+              value={localStorage.getItem("selected_cinema")}
               onChange={(event) => {
                 let index = event.target.options["selectedIndex"];
+
                 dispatch({
-                  type: "SET_SELECTED_CINE",
+                  type: SELECTED_CINE,
                   payload: event.target.options[index].value,
                 });
               }}>
@@ -57,7 +73,11 @@ export default function Header() {
               })}
             </select>
             <div className="cinema-header-time-ticket">
-              <Link to={`/cinemashows/${selectedCinema}`}>
+              <Link
+                to={`/cinemashows/${selectedCinema}`}
+                onClick={() => {
+                  dispatch(getShowtimebyCine(selectedCinema));
+                }}>
                 <span style={{color: "white"}}>
                   Times & Tickets <i className="ml-2 fa fa-ticket-alt"></i>
                 </span>
@@ -67,12 +87,19 @@ export default function Header() {
               <div className=" cinema-header-member flex items-center justify-between">
                 <div>
                   <div className="cinema-header-member-welcome-member text-xl">
-                    Welcome <span>{currentUser.taiKhoan}</span>
+                    Welcome <span>{currentUser?.taiKhoan}</span>
                   </div>
-                  <div className="flex justify-around">
-                    <div className="text-sm">account</div>
+                  <div className="flex justify-around ">
                     <div
-                      className="text-sm"
+                      className="text-sm cursor-pointer"
+                      onClick={() => {
+                        dispatch(getUserProfile());
+                        props.history.push("/userProfile");
+                      }}>
+                      account
+                    </div>
+                    <div
+                      className="text-sm cursor-pointer"
                       onClick={() => {
                         dispatch({
                           type: LOG_OUT_CURRENT_USER,

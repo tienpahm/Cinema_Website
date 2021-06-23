@@ -7,6 +7,9 @@ export class UserService extends baseService {
   loginUser = (user) => {
     return this.post(`api/QuanLyNguoiDung/DangNhap`, user);
   };
+  getUserProfile = () => {
+    return this.post(`api/QuanLyNguoiDung/ThongTinTaiKhoan`);
+  };
 }
 
 export const userService = new UserService();

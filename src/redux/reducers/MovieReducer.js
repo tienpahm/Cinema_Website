@@ -1,5 +1,6 @@
 import {
   GET_MOVIE_DETAIL,
+  RESET_MOVIE_DETAIL,
   SET_COMING_SOON_MOVIE,
   SET_MOVIE_LIST,
   SET_SHOWING_MOVIE,
@@ -51,6 +52,9 @@ export const MovieReducer = (state = defaultState, {type, payload}) => {
 
     case GET_MOVIE_DETAIL: {
       return {...state, movieDetail: payload};
+    }
+    case RESET_MOVIE_DETAIL: {
+      return {...state, movieDetail: null};
     }
     default:
       return {...state};

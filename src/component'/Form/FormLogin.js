@@ -34,6 +34,7 @@ export default function FormLogin() {
                 type="text"
                 name="taiKhoan"
                 id="username"
+                // value="strings"
                 onChange={formik.handleChange}
                 placeholder="Username"
                 className="w-full px-4 py-3 rounded-md border-coolGray-300 bg-coolGray-50 text-coolGray-800"
@@ -41,6 +42,7 @@ export default function FormLogin() {
             </div>
             <div className="space-y-1 text-sm">
               <input
+                // value="string"
                 type="password"
                 name="matKhau"
                 id="password"

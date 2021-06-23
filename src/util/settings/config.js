@@ -5,3 +5,5 @@ export const USER = "user";
 export const STATUS = {
   SUCCESS: 200,
 };
+export const TICKET_PRICE = 75000;
+export const VIP_TICKET_PRICE = 90000;

@@ -2,6 +2,9 @@ import {
   GET_CINEMA_DETAIL,
   GET_CINEMA_INFO,
   GET_CINEMA_SHOW_TIME,
+  RESET_CINEMA_DETAIL,
+  SELECTED_CINE,
+  SHOW_TIMES_BY_CINEMA,
 } from "../types/CinemaTypes";
 
 const defaultState = {
@@ -9,6 +12,7 @@ const defaultState = {
   arrCinemaShowTime: null,
   cinemaDetail: undefined,
   selectedCinema: "",
+  showTimeByCinema: null,
 };
 
 export const CinemaReducer = (state = defaultState, {type, payload}) => {
@@ -22,21 +26,28 @@ export const CinemaReducer = (state = defaultState, {type, payload}) => {
     case GET_CINEMA_DETAIL: {
       return {...state, cinemaDetail: payload};
     }
-    case "SET_SEAT_STATUS": {
-      let index = state.cinemaDetail.danhSachGhe.findIndex(
-        (item) => item.maGhe === payload
-      );
-      let cinemaDetailClone = {...state.cinemaDetail};
-      if (index !== -1) {
-        cinemaDetailClone.danhSachGhe[index].daDat =
-          !cinemaDetailClone.danhSachGhe[index].daDat;
-      }
+    // case "SET_SEAT_STATUS": {
+    //   let index = state.cinemaDetail.danhSachGhe.findIndex(
+    //     (item) => item.maGhe === payload
+    //   );
+    //   let cinemaDetailClone = {...state.cinemaDetail};
+    //   if (index !== -1) {
+    //     cinemaDetailClone.danhSachGhe[index].daDat =
+    //       !cinemaDetailClone.danhSachGhe[index].daDat;
+    //   }
 
-      return {...state};
-    }
+    //   return {...state};
+    // }
 
-    case "SET_SELECTED_CINE": {
+    case SELECTED_CINE: {
+      localStorage.setItem("selected_cinema", payload);
       return {...state, selectedCinema: payload};
+    }
+    case SHOW_TIMES_BY_CINEMA: {
+      return {...state, showTimeByCinema: payload};
+    }
+    case RESET_CINEMA_DETAIL: {
+      return {...state, cinemaDetail: undefined};
     }
     default:
       return {...state};

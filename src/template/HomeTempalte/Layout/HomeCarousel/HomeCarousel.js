@@ -23,7 +23,7 @@ export default function HomeCarousel(props) {
     slidesToScroll: 1,
     autoplay: true,
     fade: true,
-    autoplaySpeed: 4000,
+    autoplaySpeed: 2000,
     cssEase: "linear",
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
