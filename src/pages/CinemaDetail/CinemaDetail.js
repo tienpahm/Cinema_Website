@@ -76,8 +76,8 @@ export default function CinemaDetail(props) {
         <span>Please Select Your Seat </span>
       </div>
       {cinemaDetail ? (
-        <div className="py-24 w-4/5 mx-auto flex flex-wrap justify-center">
-          <div className="w-2/5">
+        <div className="py-24 lg:w-4/5 mx-auto flex flex-wrap justify-center">
+          <div className="" style={{width: "655px"}}>
             <div className="flex justify-around mb-14">
               <div className="flex flex-col items-center">
                 <div
@@ -116,19 +116,19 @@ export default function CinemaDetail(props) {
                 if (item.daDat) {
                   return (
                     <div
-                      className="w-8 h-8 mr-2 mb-2 text-center bg-red-600 rounded"
+                      className="md:w-8 w-5 h-5 mb-1 md:h-8 mr-2  md:mb-2 text-center bg-red-600 rounded"
                       style={{boxShadow: "0px 0px 5px #F87171"}}></div>
                   );
                 } else {
                   if (item.loaiGhe === "Vip") {
                     return (
                       <div
-                        className="w-8 h-8 mr-2 mb-2 bg-yellow-300 rounded cursor-pointer"
+                        className="md:w-8 w-5 h-5 mb-1 md:h-8 mr-2  md:mb-2 bg-yellow-300 rounded cursor-pointer"
                         onClick={(event) => {
                           let seatClass = event.target.className;
                           if (seatClass.includes("seat")) {
                             event.target.className =
-                              "w-8 h-8 mr-2 mb-2 bg-yellow-300 rounded cursor-pointer";
+                              "md:w-8 w-5 h-5 mb-1 md:h-8 mr-2  md:mb-2 bg-yellow-300 rounded cursor-pointer";
                             let arr = arraySeat.filter(
                               (seat) => item.maGhe !== seat.maGhe
                             );
@@ -142,21 +142,17 @@ export default function CinemaDetail(props) {
                               setArraySeat([...arraySeat, item]);
                             }
                           }
-                        }}>
-                        {(event) => {
-                          console.log(event.target);
-                        }}
-                      </div>
+                        }}></div>
                     );
                   } else {
                     return (
                       <div
-                        className="w-8 h-8 mr-2 mb-2 bg-gray-400 rounded cursor-pointer"
+                        className="md:w-8 w-5 h-5 mb-1 md:h-8 mr-2  md:mb-2 bg-gray-400 rounded cursor-pointer"
                         onClick={(event) => {
                           let seatClass = event.target.className;
                           if (seatClass.includes("seat")) {
                             event.target.className =
-                              "w-8 h-8 mr-2 mb-2 bg-gray-400 rounded cursor-pointer";
+                              "md:w-8 w-5 h-5 mb-1 md:h-8 mr-2  md:mb-2 bg-gray-400 rounded cursor-pointer";
                             let arr = arraySeat.filter(
                               (seat) => item.maGhe !== seat.maGhe
                             );
@@ -183,7 +179,7 @@ export default function CinemaDetail(props) {
               })}
             </div>
           </div>
-          <div className="w-2/5">
+          <div className="2xl:w-2/5 md:w-3/5 w-4/5 mt-5">
             <div
               className="border px-5 py-10"
               style={{boxShadow: "0px 0px 20px 0px rgb(0 0 0 / 15%)"}}>

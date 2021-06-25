@@ -13,6 +13,40 @@ export default function HomeMovieList() {
     slidesToScroll: 3,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
+    responsive: [
+      {
+        breakpoint: 1500,
+        settings: {
+          slidesToShow: 6,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 1250,
+        settings: {
+          slidesToShow: 5,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 1050,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
   const dispatch = useDispatch();
   useEffect(() => {
@@ -25,7 +59,7 @@ export default function HomeMovieList() {
         <div key={index} className="px-3 py-3">
           <div>
             <img
-              className="lg:h-80 md:h-72  w-full object-cover object-center"
+              className="lg:h-80 md:h-72 h-96  w-full object-cover object-center"
               src={item.hinhAnh}
               alt="blog"
               onError={(event) => {

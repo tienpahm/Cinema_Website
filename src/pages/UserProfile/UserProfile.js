@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Tabs} from "antd";
 import {useFormik} from "formik";
-import {getUserProfile} from "../../redux/actions/UserAction";
+import {editUserProfile, getUserProfile} from "../../redux/actions/UserAction";
 
 const {TabPane} = Tabs;
 
@@ -25,13 +25,13 @@ export default function UserProfile() {
       hoTen: userProfile?.hoTen,
     },
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      // alert(JSON.stringify(values, null, 2));
+      // dispatch(editUserProfile(values));
     },
   });
 
-  console.log(userProfile);
   return (
-    <div className="my-24 w-3/5 mx-auto">
+    <div className="my-24 lg:w-3/5 md:w-4/5 w-full md:mx-auto mx-2">
       <Tabs defaultActiveKey="1">
         <TabPane
           tab={
@@ -41,7 +41,9 @@ export default function UserProfile() {
             </span>
           }
           key="1">
-          <form onSubmit={formik.handleSubmit} className="w-3/5 mx-auto">
+          <form
+            onSubmit={formik.handleSubmit}
+            className="xl:w-3/5 lg:w-4/5 w-full mx-auto">
             <div className="text-center">
               <p className="text-2xl font-semibold mb-5">Edit Detail</p>
             </div>

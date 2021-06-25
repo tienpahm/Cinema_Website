@@ -11,7 +11,6 @@ import {RESET_CINEMA_DETAIL} from "../../redux/types/CinemaTypes";
 export default function Detail(props) {
   const dispatch = useDispatch();
   const {movieDetail} = useSelector((state) => state.MovieReducer);
-  console.log(movieDetail);
   const {arrCinema} = useSelector((state) => state.CinemaReducer);
   const [isModalVisible, setIsModalVisible] = useState(false);
   useEffect(() => {
@@ -47,7 +46,7 @@ export default function Detail(props) {
 
       return (
         <div>
-          <p className="text-center font-semibold text-xl mx-5">
+          <p className="text-center font-semibold md:text-xl text-lg mx-5">
             {_.uniq(tempArr)[0]}
           </p>
           <div className="flex justify-center flex-wrap">
@@ -56,7 +55,7 @@ export default function Detail(props) {
                 return (
                   <div
                     key={index}
-                    className="mr-5 py-3 px-5 bg-gray-200 w-72 cursor-pointer border-red-600 mb-5 "
+                    className="mr-5 md:py-3 md:px-5 py-2 px-3 bg-gray-200 md:w-72 w-52 cursor-pointer border-red-600 mb-5 "
                     style={{borderLeftWidth: "20px"}}
                     onClick={() => {
                       props.history.push(`cinemaDetail/${item.maLichChieu}`);
@@ -64,12 +63,12 @@ export default function Detail(props) {
                     <div className="flex justify-between">
                       <span>Original </span>
                       <span
-                        className="bg-red-600 p-1 text-white"
+                        className="bg-red-600 p-1 text-sm text-white"
                         style={{transform: "translate(20px, -10px)"}}>
                         SAVER
                       </span>
                     </div>
-                    <div className="text-2xl">
+                    <div className="md:text-2xl text-xl">
                       {item.ngayChieuGioChieu.slice(
                         11,
                         item.ngayChieuGioChieu.length - 3
@@ -135,17 +134,19 @@ export default function Detail(props) {
               style={{color: "white"}}
               className="flex flex-col justify-between">
               <div className="flex">
-                <p className="text-2xl font-bold">
+                <p className="md:text-2xl text-xl font-bold mb-0">
                   {_.replace(movieDetail.biDanh, "-", " ").toUpperCase()}
                 </p>
                 <span
-                  className="text-xl ml-5 bg-yellow-200 p-1 border rounded-sm"
+                  className="md:text-xl text-md ml-5 bg-yellow-200 p-1 border rounded-sm"
                   style={{height: "fit-content", color: "black"}}>
                   PG
                 </span>
               </div>
-              <div className="text-xl">{movieDetail.moTa}</div>
-              <div className="text-xl">
+              <div className="md:text-xl text-lg hidden sm:block">
+                {movieDetail.moTa}
+              </div>
+              <div className="md:text-xl text-lg">
                 <div>
                   <span className="w-36 inline-block">ReaLse Date :</span>{" "}
                   {new Date(movieDetail.ngayKhoiChieu).toLocaleDateString(
@@ -176,7 +177,7 @@ export default function Detail(props) {
                       <img
                         src={item.logo}
                         alt=""
-                        className="rounded-full w-20 h-20"
+                        className="rounded-full md:w-20 md:h-20 w-14 h-14"
                       />
                     }
                     key={index}>

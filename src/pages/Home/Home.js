@@ -32,31 +32,29 @@ export default function Home(props) {
     <div>
       <HomeCarousel />
 
-      <section className="text-gray-600 body-font home my-14">
-        <div className="w-full px-5 py-24 ">
+      <section className="text-gray-600 body-font home my-10 lg:my-14">
+        <div className="w-full px-5 py-10 lg:py-24 ">
           <div className="text-center">
             <button
-              class={`px-8 py-3 mr-5 mb-5 font-semibold border rounded ${
+              class={`lg:text-3xl text-2xl px-8 lg:py-4 py-3 mr-5 mb-5 font-semibold border rounded ${
                 buttonStateShowing ? "active_status" : "haha"
               }`}
               onClick={(e) => {
                 setButtonStateShowing(!buttonStateShowing);
                 setButtonStateComing(false);
                 dispatch({type: SET_SHOWING_MOVIE});
-              }}
-              style={{fontSize: "2em"}}>
+              }}>
               SHOWING
             </button>
             <button
-              class={`px-8 py-3 mr-5 mb-5 font-semibold border rounded ${
+              class={`lg:text-3xl text-2xl px-8 lg:py-4 py-3 mr-5 mb-5 font-semibold border rounded ${
                 buttonStateComing ? "active_status" : "haha"
               }`}
               onClick={() => {
                 dispatch({type: SET_COMING_SOON_MOVIE});
                 setButtonStateComing(!buttonStateComing);
                 setButtonStateShowing(false);
-              }}
-              style={{fontSize: "2em"}}>
+              }}>
               COMING SOON
             </button>
           </div>

@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {Carousel} from "antd";
 import {useDispatch, useSelector} from "react-redux";
 import Slider from "react-slick";
@@ -15,6 +15,12 @@ export default function HomeCarousel(props) {
   useEffect(() => {
     dispatch(getCarouselAction());
   }, []);
+  const [windownWidth, setwindowWidth] = useState(window.innerWidth);
+
+  window.onresize = () => {
+    setwindowWidth(window.innerWidth);
+  };
+
   const settings = {
     dots: true,
     infinite: true,
@@ -89,7 +95,9 @@ export default function HomeCarousel(props) {
             style={{
               height: "600px",
               // background: `#000 url(${item.hinhAnh}) no-repeat center`,
-              backgroundImage: `url(${item.desktop})`,
+              backgroundImage: `url(${
+                windownWidth > 992 ? item.desktop : item.mobile
+              })`,
               backgroundRepeat: "no-repeat",
               backgroundSize: "cover",
               backgroundPosition: "center",

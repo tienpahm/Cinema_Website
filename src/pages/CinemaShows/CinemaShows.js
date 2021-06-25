@@ -1,15 +1,25 @@
-import React from "react";
+import React, {useState} from "react";
 import {useSelector} from "react-redux";
 import {Tabs} from "antd";
 import _ from "lodash";
 export default function CinemaShows(props) {
   const {showTimeByCinema} = useSelector((state) => state.CinemaReducer);
+  const [tabPosition, setTabPosition] = useState("left");
   // const showTime = showTimeByCinema[0];
   // console.log("shpw", showTime);
+
+  window.onresize = () => {
+    if (window.innerWidth < 1600) {
+      setTabPosition("top");
+    } else {
+      setTabPosition("left");
+    }
+  };
+
   const {TabPane} = Tabs;
   return showTimeByCinema ? (
     <div className="my-24">
-      <Tabs tabPosition="left">
+      <Tabs tabPosition={tabPosition}>
         {showTimeByCinema[0].lstCumRap.map((item, index) => {
           return (
             <TabPane
@@ -39,10 +49,10 @@ export default function CinemaShows(props) {
                     <div className="movie-tab-picture flex">
                       <img
                         src={movie.hinhAnh}
-                        // className="w-28 h-28 rounded-full"
+                        className="h-96"
                         style={{
                           minWidth: "214px",
-                          height: "318px",
+                          // height: "318px",
                           boxShadow: "0px 0px 10px 0px #353535",
                         }}
                         alt=""
@@ -56,10 +66,10 @@ export default function CinemaShows(props) {
                       className="movie-showtime flex ml-5 flex-wrap"
                       style={{flexDirection: "column"}}>
                       <div>
-                        <p className="mb-5 font-semibold text-3xl">
+                        <p className="md:mb-3 lg:mb-5 mb-0 font-semibold lg:text-3xl md:text-2xl text-xl ">
                           {movie.tenPhim}
                         </p>
-                        <p className="text-xl font-bold">
+                        <p className="text-xl md:text-lg font-bold">
                           {showTimeByCinema[0].tenHeThongRap}
                         </p>
                       </div>
@@ -76,7 +86,7 @@ export default function CinemaShows(props) {
                             return (
                               <div
                                 key={index}
-                                className="mr-5 py-3 px-5 bg-gray-200 w-72 cursor-pointer border-red-600 mb-5 "
+                                className="mr-5 lg:py-3 lg:px-5 py-2 px-3 bg-gray-200 lg:w-72 md:w-52 w-32 cursor-pointer border-red-600 mb-5 "
                                 style={{borderLeftWidth: "20px"}}
                                 onClick={() => {
                                   props.history.push(
@@ -86,7 +96,7 @@ export default function CinemaShows(props) {
                                 <div className="flex justify-between">
                                   <span>Original </span>
                                   <span
-                                    className="bg-red-600 p-1 text-white"
+                                    className="bg-red-600 p-1 text-white hidden md:block"
                                     style={{
                                       transform: "translate(20px, -10px)",
                                     }}>

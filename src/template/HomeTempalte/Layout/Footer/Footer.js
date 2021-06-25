@@ -10,23 +10,23 @@ export default function Footer() {
       <footer className="py-6 text-white" style={{backgroundColor: "black"}}>
         <div className="container px-6 mx-auto space-y-6 divide-y divide-gray-400 md:space-y-12 divide-opacity-50">
           <div className="grid grid-cols-12">
-            <div className="pb-6 col-span-full md:pb-0 md:col-span-3">
+            <div className="pb-6 col-span-full md:m-0 m-auto md:pb-0 md:col-span-3">
               <img
                 src={require("../../../../assets/img/eventlogo.webp").default}
                 alt="logo"
-                className="w-60"
+                className="md:w-52 w-40"
               />
             </div>
-            <div className="md:col-span-6">
+            <div className="md:col-span-6 col-span-full">
               <h2
+                className="text-center md:text-left md:mb-12 mb-6"
                 style={{
                   color: "white",
                   fontSize: "1.2rem",
-                  marginBottom: "50px",
                 }}>
                 Partnership
               </h2>
-              <div className="flex justify-around">
+              <div className="flex justify-around w">
                 {_.map(arrCinema, (item, index) => {
                   return (
                     <div key={index}>

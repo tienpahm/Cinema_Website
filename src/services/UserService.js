@@ -10,6 +10,9 @@ export class UserService extends baseService {
   getUserProfile = () => {
     return this.post(`api/QuanLyNguoiDung/ThongTinTaiKhoan`);
   };
+  editUserDetail = (userInfo) => {
+    return this.put(`api/QuanLyNguoiDung/CapNhatThongTinNguoiDung`, userInfo);
+  };
 }
 
 export const userService = new UserService();

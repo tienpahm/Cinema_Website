@@ -44,3 +44,19 @@ export const getUserProfile = (user) => {
     }
   };
 };
+export const editUserProfile = (userInfo) => {
+  return async (dispatch) => {
+    try {
+      const {data, status} = await userService.editUserDetail(userInfo);
+      console.log(data);
+      // if (status === STATUS.SUCCESS) {
+      //   dispatch({
+      //     type: SET_USER_PROFILE,
+      //     payload: data.content,
+      //   });
+      // }
+    } catch (error) {
+      // message.error("Invalid username or password");
+    }
+  };
+};
