@@ -44,7 +44,7 @@ export const CinemaReducer = (state = defaultState, {type, payload}) => {
       return {...state, selectedCinema: payload};
     }
     case SHOW_TIMES_BY_CINEMA: {
-      return {...state, showTimeByCinema: payload};
+      return {...state, showTimeByCinema: payload, selectedCinema: ""};
     }
     case RESET_CINEMA_DETAIL: {
       return {...state, cinemaDetail: undefined};

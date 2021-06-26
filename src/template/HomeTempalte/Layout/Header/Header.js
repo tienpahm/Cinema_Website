@@ -60,7 +60,12 @@ export default function Header(props) {
         <Link
           to={`/cinemashows/${selectedCinema}`}
           onClick={() => {
-            dispatch(getShowtimebyCine(selectedCinema));
+            if (selectedCinema !== "") {
+              dispatch(getShowtimebyCine(selectedCinema));
+              history.push(`/cinemashows/${selectedCinema}`);
+            } else {
+              message.warn("Please Choose Cinema First");
+            }
           }}>
           <span style={{color: "white"}}>
             Times & Tickets <i className="ml-2 fa fa-ticket-alt"></i>
@@ -140,9 +145,14 @@ export default function Header(props) {
             </select>
             <div className="cinema-header-time-ticket">
               <Link
-                to={`/cinemashows/${selectedCinema}`}
+                // to={`/cinemashows/${selectedCinema}`}
                 onClick={() => {
-                  dispatch(getShowtimebyCine(selectedCinema));
+                  if (selectedCinema !== "") {
+                    dispatch(getShowtimebyCine(selectedCinema));
+                    history.push(`/cinemashows/${selectedCinema}`);
+                  } else {
+                    message.warn("Please Choose Cinema First");
+                  }
                 }}>
                 <span style={{color: "white"}}>
                   Times & Tickets <i className="ml-2 fa fa-ticket-alt"></i>

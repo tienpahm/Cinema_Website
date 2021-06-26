@@ -1,12 +1,18 @@
-import React, {useState} from "react";
-import {useSelector} from "react-redux";
+import React, {useEffect, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
 import {Tabs} from "antd";
 import _ from "lodash";
+import {getShowtimebyCine} from "../../redux/actions/CinemaAction";
 export default function CinemaShows(props) {
   const {showTimeByCinema} = useSelector((state) => state.CinemaReducer);
   const [tabPosition, setTabPosition] = useState("left");
+  const {selectedCinema} = useSelector((state) => state.CinemaReducer);
+  const dispatch = useDispatch();
   // const showTime = showTimeByCinema[0];
   // console.log("shpw", showTime);
+  useEffect(() => {
+    dispatch(getShowtimebyCine(selectedCinema));
+  }, []);
 
   window.onresize = () => {
     if (window.innerWidth < 1600) {

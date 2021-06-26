@@ -51,6 +51,13 @@ export default function FormLogin() {
                 className="w-full px-4 py-3 rounded-md border-coolGray-300 bg-coolGray-50 text-coolGray-800"
               />
             </div>
+            <div className="text-sm font-normal">
+              Test user :{" "}
+              <div>
+                <p className="mb-0">Username : strings</p>
+                <p className="mb-0"> Password : string</p>
+              </div>
+            </div>
             <button
               type="submit"
               className="block w-full px-3 py-2 text-center rounded-sm text-white text-lg bg-blue-600">
