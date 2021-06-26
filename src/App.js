@@ -1,24 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import {createBrowserHistory} from "history";
+import {Router, Switch} from "react-router";
+import {HomeTemplate} from "./template/HomeTempalte/HomeTemplate";
+import Home from "./pages/Home/Home";
+import Contact from "./pages/Contact/Contact";
+import News from "./pages/News/News";
+import Detail from "./pages/Detail/Detail";
+import CinemaDetail from "./pages/CinemaDetail/CinemaDetail";
+import CinemaShows from "./pages/CinemaShows/CinemaShows";
+import UserProfile from "./pages/UserProfile/UserProfile";
+
+export const history = createBrowserHistory();
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router history={history}>
+      <Switch>
+        <HomeTemplate path="/" exact Component={Home} />
+        <HomeTemplate path="/home" exact Component={Home} />
+        <HomeTemplate path="/contact" exact Component={Contact} />
+        <HomeTemplate path="/news" exact Component={News} />
+        <HomeTemplate path="/detail/:id" exact Component={Detail} />
+        <HomeTemplate path="/cinemashows/:id" exact Component={CinemaShows} />
+        <HomeTemplate
+          path="/detail/cinemaDetail/:id"
+          exaxt
+          Component={CinemaDetail}
+        />
+        <HomeTemplate
+          path="/cinemashows/cinemaDetail/:id"
+          exaxt
+          Component={CinemaDetail}
+        />
+        <HomeTemplate path="/userProfile" exact Component={UserProfile} />
+      </Switch>
+    </Router>
   );
 }
 
