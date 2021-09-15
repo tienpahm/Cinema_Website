@@ -7,9 +7,9 @@ A Cinema Hompage with inspire by Event Cinema. In which, situmilate the process 
 Name a few tech use  : 
   * React
   * JavaScript
-  Redux saga
-  Third party API
-  Tailwind
+  * Redux saga
+  * Third party API
+  * Tailwind
 
 ---
 ## Demo
