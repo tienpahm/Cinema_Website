@@ -5,8 +5,8 @@
 A Cinema Hompage with inspire by Event Cinema. In which, situmilate the process of booking and payment systems.
 ---
 Name a few tech use  : 
-  React
-  JavaScript
+  *React
+  *JavaScript
   Redux saga
   Third party API
   Tailwind
